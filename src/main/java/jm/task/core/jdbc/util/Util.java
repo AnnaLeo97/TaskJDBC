@@ -20,7 +20,6 @@ public class Util {
             }
         } catch (Exception ex) {
             System.out.println("Connection failed...");
-
             System.out.println(ex);
         }
     }
