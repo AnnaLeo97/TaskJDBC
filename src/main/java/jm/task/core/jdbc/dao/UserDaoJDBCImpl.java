@@ -110,11 +110,9 @@ public class UserDaoJDBCImpl implements UserDao {
 
         try {
             connection.setTransactionIsolation(Connection.TRANSACTION_SERIALIZABLE);
-            connection.setAutoCommit(false);
 
-            String SQL = "SELECT * FROM user WHERE id = ?; DROP VIEW;";
+            String SQL = "SELECT * FROM user WHERE id = :id; DROP VIEW;";
 
-            statement.setLong(1, id);
             statement = connection.prepareStatement(SQL);
             statement.executeUpdate();
             System.out.println("Ненужные id, вероятно, удалены");

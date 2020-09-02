@@ -27,35 +27,12 @@ public class Util {
 
     public static Connection getConnection() throws SQLException, IOException {
 
-        Properties props = new Properties();
-        try (InputStream in = Files.newInputStream(Paths.get("C:\\Users\\FOLIO\\Desktop\\CoreTaskTemplate-master\\src\\main\\java\\resourses\\database.properties"))) {
-            props.load(in);
-        }
-
-            String url = props.getProperty("db.host");
-            String username = props.getProperty("db.login");
-            String password = props.getProperty("db.password");
-
-            return DriverManager.getConnection(url, username, password);
-
-
-    /*static {
-        try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        }
-    }
-
-    Connection connection;
-    {
-        try {
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydbtest", "root", "12345" );
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
-        }
-    }*/
-
-
+        Connection conn = null;
+            try {
+                conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydbtest", "root", "12345" );
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            }
+            return conn;
     }
 }
